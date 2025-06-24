@@ -1,6 +1,6 @@
 # @deepcrawl-sdk/ts
 
-Developer-friendly & type-safe Typescript SDK specifically catered to leverage *@deepcrawl-sdk/ts* API.
+
 
 <div align="left">
     <a href="https://www.speakeasy.com/?utm_source=@deepcrawl-sdk/ts&utm_campaign=typescript"><img src="https://custom-icon-badges.demolab.com/badge/-Built%20By%20Speakeasy-212015?style=for-the-badge&logoColor=FBE331&logo=speakeasy&labelColor=545454" /></a>
@@ -9,10 +9,13 @@ Developer-friendly & type-safe Typescript SDK specifically catered to leverage *
     </a>
 </div>
 
+<br />
+<br />
 
-<br /><br />
-> [!IMPORTANT]
-> This SDK is not yet ready for production use. To complete setup please follow the steps outlined in your [workspace](https://app.speakeasy.com/org/dc/sdk). Delete this section before > publishing to a package manager.
+> Developer-friendly & type-safe Typescript SDK specifically catered to leverage *@deepcrawl-sdk/ts* API.
+>
+
+<br />
 
 <!-- Start Summary [summary] -->
 ## Summary
@@ -23,21 +26,37 @@ Developer-friendly & type-safe Typescript SDK specifically catered to leverage *
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
 <!-- $toc-max-depth=2 -->
-* [@deepcrawl-sdk/ts](#deepcrawl-sdkts)
-  * [SDK Installation](#sdk-installation)
-  * [Requirements](#requirements)
-  * [SDK Example Usage](#sdk-example-usage)
-  * [Authentication](#authentication)
-  * [Available Resources and Operations](#available-resources-and-operations)
-  * [Standalone functions](#standalone-functions)
-  * [Retries](#retries)
-  * [Error Handling](#error-handling)
-  * [Server Selection](#server-selection)
-  * [Custom HTTP Client](#custom-http-client)
-  * [Debugging](#debugging)
-* [Development](#development)
-  * [Maturity](#maturity)
-  * [Contributions](#contributions)
+- [@deepcrawl-sdk/ts](#deepcrawl-sdkts)
+  - [Summary](#summary)
+  - [Table of Contents](#table-of-contents)
+  - [SDK Installation](#sdk-installation)
+    - [NPM](#npm)
+    - [PNPM](#pnpm)
+    - [Bun](#bun)
+    - [Yarn](#yarn)
+    - [Model Context Protocol (MCP) Server](#model-context-protocol-mcp-server)
+  - [Requirements](#requirements)
+  - [SDK Example Usage](#sdk-example-usage)
+    - [Get Markdown from a URL (GET)](#get-markdown-from-a-url-get)
+    - [Read URL (POST)](#read-url-post)
+    - [Extract Links from a URL (POST)](#extract-links-from-a-url-post)
+  - [Authentication](#authentication)
+    - [Per-Client Security Schemes](#per-client-security-schemes)
+  - [Available Resources and Operations](#available-resources-and-operations)
+    - [DeepcrawlApp SDK](#deepcrawlapp-sdk)
+  - [Standalone functions](#standalone-functions)
+  - [Retries](#retries)
+  - [Error Handling](#error-handling)
+    - [Example](#example)
+    - [Error Classes](#error-classes)
+  - [Server Selection](#server-selection)
+    - [Override Server URL Per-Client](#override-server-url-per-client)
+  - [Custom HTTP Client](#custom-http-client)
+  - [Debugging](#debugging)
+- [Development](#development)
+  - [Maturity](#maturity)
+  - [Contributions](#contributions)
+    - [SDK Created by Speakeasy](#sdk-created-by-speakeasy)
 
 <!-- End Table of Contents [toc] -->
 
