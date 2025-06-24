@@ -1,0 +1,37 @@
+speakeasyVersion: 1.568.0
+sources:
+    DeepcrawlApp:
+        sourceNamespace: deepcrawl-app
+        sourceRevisionDigest: sha256:d5df8bf2a0a9a6bc67b5c0647563069aec535498171c3177679a32ef274f8740
+        sourceBlobDigest: sha256:00506afd5821945d7b972ddb5119bc3672a6143a7b55c73194bd8c2ad45a2b1b
+        tags:
+            - latest
+            - 0.0.1
+targets:
+    deepcrawl-app:
+        source: DeepcrawlApp
+        sourceNamespace: deepcrawl-app
+        sourceRevisionDigest: sha256:d5df8bf2a0a9a6bc67b5c0647563069aec535498171c3177679a32ef274f8740
+        sourceBlobDigest: sha256:00506afd5821945d7b972ddb5119bc3672a6143a7b55c73194bd8c2ad45a2b1b
+        codeSamplesNamespace: deepcrawl-app-typescript-code-samples
+        codeSamplesRevisionDigest: sha256:a544c35e526b9079b1c58235377301bfd0318f4b3efacc359c0f877726ec999b
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        DeepcrawlApp:
+            inputs:
+                - location: https://api.deepcrawl.dev/openapi
+            output: .speakeasy/out.openapi.yaml
+            registry:
+                location: registry.speakeasyapi.dev/dc/sdk/deepcrawl-app
+    targets:
+        deepcrawl-app:
+            target: typescript
+            source: DeepcrawlApp
+            codeSamples:
+                registry:
+                    location: registry.speakeasyapi.dev/dc/sdk/deepcrawl-app-typescript-code-samples
+                labelOverride:
+                    fixedValue: Typescript (SDK)
+                blocking: false

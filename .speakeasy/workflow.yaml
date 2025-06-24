@@ -1,0 +1,22 @@
+workflowVersion: 1.0.0
+speakeasyVersion: latest
+sources:
+    DeepcrawlApp:
+        inputs:
+            - location: https://api.deepcrawl.dev/openapi
+        output: .speakeasy/out.openapi.yaml
+        registry:
+            location: registry.speakeasyapi.dev/dc/sdk/deepcrawl-app
+targets:
+    deepcrawl-app:
+        target: typescript
+        source: DeepcrawlApp
+        publish:
+            npm:
+                token: $npm_token
+        codeSamples:
+            registry:
+                location: registry.speakeasyapi.dev/dc/sdk/deepcrawl-app-typescript-code-samples
+            labelOverride:
+                fixedValue: Typescript (SDK)
+            blocking: false
