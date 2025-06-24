@@ -3,10 +3,13 @@ id: 63ce4ad8-aebe-4923-a704-b0d8097e5a32
 management:
   docChecksum: 1a9ec0fbbddf3322f41992af359da9da
   docVersion: 0.0.1
-  speakeasyVersion: 1.568.0
-  generationVersion: 2.632.2
-  releaseVersion: 0.0.1
-  configChecksum: 7d4c1ddb65ad57e4ffc1a93af2ff6e37
+  speakeasyVersion: 1.568.2
+  generationVersion: 2.634.2
+  releaseVersion: 0.0.2
+  configChecksum: 03e29fff39c6f4c5c238a703cdca9e8e
+  repoURL: https://github.com/lumpinif/deepcrawl-sdk-ts.git
+  installationURL: https://github.com/lumpinif/deepcrawl-sdk-ts
+  published: true
 features:
   typescript:
     additionalDependencies: 0.1.0
