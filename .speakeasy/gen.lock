@@ -5,8 +5,8 @@ management:
   docVersion: 0.0.1
   speakeasyVersion: 1.568.2
   generationVersion: 2.634.2
-  releaseVersion: 0.0.2
-  configChecksum: 03e29fff39c6f4c5c238a703cdca9e8e
+  releaseVersion: 0.0.1
+  configChecksum: 9be1578e68a5b72f500fd5c09f5d9883
   repoURL: https://github.com/lumpinif/deepcrawl-sdk-ts.git
   installationURL: https://github.com/lumpinif/deepcrawl-sdk-ts
   published: true
