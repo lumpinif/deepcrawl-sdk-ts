@@ -3,11 +3,11 @@
  */
 
 import { extractLinks } from "../../funcs/extractLinks.js";
-import * as operations from "../../models/operations/index.js";
+import * as models from "../../models/index.js";
 import { formatResult, ToolDefinition } from "../tools.js";
 
 const args = {
-  request: operations.ExtractLinksPostRequest$inboundSchema,
+  request: models.ExtractLinksPostRequest$inboundSchema,
 };
 
 export const tool$extractLinks: ToolDefinition<typeof args> = {

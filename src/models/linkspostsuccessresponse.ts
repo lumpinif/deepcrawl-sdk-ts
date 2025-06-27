@@ -5,7 +5,6 @@
 import * as z from "zod";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
-import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 import {
   ExtractedLinks,
   ExtractedLinks$inboundSchema,
@@ -30,6 +29,7 @@ import {
   PageMetadata$Outbound,
   PageMetadata$outboundSchema,
 } from "./pagemetadata.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   SkippedLinks,
   SkippedLinks$inboundSchema,

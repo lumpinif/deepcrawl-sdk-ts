@@ -7,7 +7,6 @@ import { getMarkdown } from "../funcs/getMarkdown.js";
 import { readUrl } from "../funcs/readUrl.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as models from "../models/index.js";
-import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class DeepcrawlApp extends ClientSDK {
@@ -15,7 +14,7 @@ export class DeepcrawlApp extends ClientSDK {
    * Directly return page markdown content from the request URL.
    */
   async getMarkdown(
-    request: operations.GetMarkdownRequest,
+    request: models.GetMarkdownRequest,
     options?: RequestOptions,
   ): Promise<string> {
     return unwrapAsync(getMarkdown(
@@ -29,7 +28,7 @@ export class DeepcrawlApp extends ClientSDK {
    * Returning full result object from the request URL.
    */
   async readUrl(
-    request: operations.ReadUrlRequest,
+    request: models.ReadUrlRequest,
     options?: RequestOptions,
   ): Promise<models.ReadSuccessResponse> {
     return unwrapAsync(readUrl(
@@ -43,7 +42,7 @@ export class DeepcrawlApp extends ClientSDK {
    * Returning extracted links sitemap results for the request URL.
    */
   async extractLinks(
-    request: operations.ExtractLinksPostRequest,
+    request: models.ExtractLinksPostRequest,
     options?: RequestOptions,
   ): Promise<models.LinksPostSuccessResponse> {
     return unwrapAsync(extractLinks(

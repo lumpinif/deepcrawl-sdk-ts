@@ -11,18 +11,17 @@ import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
-import { DeepcrawlAppError } from "../models/errors/deepcrawlapperror.js";
+import { DeepcrawlAppError } from "../models/deepcrawlapperror.js";
 import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
   RequestTimeoutError,
   UnexpectedClientError,
-} from "../models/errors/httpclienterrors.js";
-import * as errors from "../models/errors/index.js";
-import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
-import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
+} from "../models/httpclienterrors.js";
+import * as models from "../models/index.js";
+import { ResponseValidationError } from "../models/responsevalidationerror.js";
+import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -31,12 +30,12 @@ import { Result } from "../types/fp.js";
  */
 export function getMarkdown(
   client: DeepcrawlAppCore,
-  request: operations.GetMarkdownRequest,
+  request: models.GetMarkdownRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
     string,
-    | errors.BaseErrorResponse
+    | models.BaseErrorResponse
     | DeepcrawlAppError
     | ResponseValidationError
     | ConnectionError
@@ -56,13 +55,13 @@ export function getMarkdown(
 
 async function $do(
   client: DeepcrawlAppCore,
-  request: operations.GetMarkdownRequest,
+  request: models.GetMarkdownRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
       string,
-      | errors.BaseErrorResponse
+      | models.BaseErrorResponse
       | DeepcrawlAppError
       | ResponseValidationError
       | ConnectionError
@@ -77,7 +76,7 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => operations.GetMarkdownRequest$outboundSchema.parse(value),
+    (value) => models.GetMarkdownRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -158,7 +157,7 @@ async function $do(
 
   const [result] = await M.match<
     string,
-    | errors.BaseErrorResponse
+    | models.BaseErrorResponse
     | DeepcrawlAppError
     | ResponseValidationError
     | ConnectionError
@@ -169,7 +168,7 @@ async function $do(
     | SDKValidationError
   >(
     M.text(200, z.string(), { ctype: "text/markdown" }),
-    M.jsonErr(500, errors.BaseErrorResponse$inboundSchema),
+    M.jsonErr(500, models.BaseErrorResponse$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, req, { extraFields: responseFields });

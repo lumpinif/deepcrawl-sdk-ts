@@ -3,10 +3,32 @@
  */
 
 import * as z from "zod";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
+import { safeParse } from "../lib/schemas.js";
+import { Result as SafeParseResult } from "../types/fp.js";
+import {
+  HTMLCleaningOptions,
+  HTMLCleaningOptions$inboundSchema,
+  HTMLCleaningOptions$Outbound,
+  HTMLCleaningOptions$outboundSchema,
+} from "./htmlcleaningoptions.js";
+import {
+  LinkExtractionOptions,
+  LinkExtractionOptions$inboundSchema,
+  LinkExtractionOptions$Outbound,
+  LinkExtractionOptions$outboundSchema,
+} from "./linkextractionoptions.js";
+import {
+  LinksOrder,
+  LinksOrder$inboundSchema,
+  LinksOrder$outboundSchema,
+} from "./linksorder.js";
+import {
+  MetadataOptions,
+  MetadataOptions$inboundSchema,
+  MetadataOptions$Outbound,
+  MetadataOptions$outboundSchema,
+} from "./metadataoptions.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
  * /links POST request body, links options schema
@@ -45,7 +67,7 @@ export type ExtractLinksPostRequest = {
   /**
    * How to order links within each folder: "page" (preserve original order) or "alphabetical" (sort A→Z by URL).
    */
-  linksOrder?: models.LinksOrder | undefined;
+  linksOrder?: LinksOrder | undefined;
   /**
    * Whether to include extracted links for each node in the tree.
    */
@@ -57,9 +79,9 @@ export type ExtractLinksPostRequest = {
   /**
    * Options for metadata extraction.
    */
-  metadataOptions?: models.MetadataOptions | undefined;
-  linksOptions?: models.LinkExtractionOptions | undefined;
-  cleanedHtmlOptions?: models.HTMLCleaningOptions | undefined;
+  metadataOptions?: MetadataOptions | undefined;
+  linksOptions?: LinkExtractionOptions | undefined;
+  cleanedHtmlOptions?: HTMLCleaningOptions | undefined;
 };
 
 /** @internal */
@@ -75,12 +97,12 @@ export const ExtractLinksPostRequest$inboundSchema: z.ZodType<
   robots: z.nullable(z.boolean().default(false)),
   sitemapXML: z.nullable(z.boolean().default(false)),
   folderFirst: z.nullable(z.boolean()).optional(),
-  linksOrder: models.LinksOrder$inboundSchema.optional(),
+  linksOrder: LinksOrder$inboundSchema.optional(),
   extractedLinks: z.nullable(z.boolean()).optional(),
   subdomainAsRootUrl: z.nullable(z.boolean()).optional(),
-  metadataOptions: models.MetadataOptions$inboundSchema.optional(),
-  linksOptions: models.LinkExtractionOptions$inboundSchema.optional(),
-  cleanedHtmlOptions: models.HTMLCleaningOptions$inboundSchema.optional(),
+  metadataOptions: MetadataOptions$inboundSchema.optional(),
+  linksOptions: LinkExtractionOptions$inboundSchema.optional(),
+  cleanedHtmlOptions: HTMLCleaningOptions$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -95,9 +117,9 @@ export type ExtractLinksPostRequest$Outbound = {
   linksOrder?: string | undefined;
   extractedLinks?: boolean | null | undefined;
   subdomainAsRootUrl?: boolean | null | undefined;
-  metadataOptions?: models.MetadataOptions$Outbound | undefined;
-  linksOptions?: models.LinkExtractionOptions$Outbound | undefined;
-  cleanedHtmlOptions?: models.HTMLCleaningOptions$Outbound | undefined;
+  metadataOptions?: MetadataOptions$Outbound | undefined;
+  linksOptions?: LinkExtractionOptions$Outbound | undefined;
+  cleanedHtmlOptions?: HTMLCleaningOptions$Outbound | undefined;
 };
 
 /** @internal */
@@ -113,12 +135,12 @@ export const ExtractLinksPostRequest$outboundSchema: z.ZodType<
   robots: z.nullable(z.boolean().default(false)),
   sitemapXML: z.nullable(z.boolean().default(false)),
   folderFirst: z.nullable(z.boolean()).optional(),
-  linksOrder: models.LinksOrder$outboundSchema.optional(),
+  linksOrder: LinksOrder$outboundSchema.optional(),
   extractedLinks: z.nullable(z.boolean()).optional(),
   subdomainAsRootUrl: z.nullable(z.boolean()).optional(),
-  metadataOptions: models.MetadataOptions$outboundSchema.optional(),
-  linksOptions: models.LinkExtractionOptions$outboundSchema.optional(),
-  cleanedHtmlOptions: models.HTMLCleaningOptions$outboundSchema.optional(),
+  metadataOptions: MetadataOptions$outboundSchema.optional(),
+  linksOptions: LinkExtractionOptions$outboundSchema.optional(),
+  cleanedHtmlOptions: HTMLCleaningOptions$outboundSchema.optional(),
 });
 
 /**

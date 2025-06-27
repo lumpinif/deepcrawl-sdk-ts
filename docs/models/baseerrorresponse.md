@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { BaseErrorResponse } from "@deepcrawl-sdk/ts/models/errors";
+import { BaseErrorResponse } from "@deepcrawl-sdk/ts";
 
 // No examples available for this model
 ```

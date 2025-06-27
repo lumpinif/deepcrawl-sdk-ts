@@ -3,10 +3,10 @@ id: 63ce4ad8-aebe-4923-a704-b0d8097e5a32
 management:
   docChecksum: 1a9ec0fbbddf3322f41992af359da9da
   docVersion: 0.0.1
-  speakeasyVersion: 1.568.2
-  generationVersion: 2.634.2
-  releaseVersion: 0.0.1
-  configChecksum: 9be1578e68a5b72f500fd5c09f5d9883
+  speakeasyVersion: 1.571.0
+  generationVersion: 2.640.1
+  releaseVersion: 0.0.2
+  configChecksum: 46cd316be51bb2a020c4743c0114dc5d
   repoURL: https://github.com/lumpinif/deepcrawl-sdk-ts.git
   installationURL: https://github.com/lumpinif/deepcrawl-sdk-ts
   published: true
@@ -44,10 +44,12 @@ generatedFiles:
   - RUNTIMES.md
   - USAGE.md
   - docs/lib/utils/retryconfig.md
-  - docs/models/errors/baseerrorresponse.md
-  - docs/models/errors/linksposterrorresponse.md
+  - docs/models/baseerrorresponse.md
+  - docs/models/errorslinksposterrorresponse.md
   - docs/models/extractedlinks.md
   - docs/models/extractedlinksmedia.md
+  - docs/models/extractlinkspostrequest.md
+  - docs/models/getmarkdownrequest.md
   - docs/models/htmlcleaningoptions.md
   - docs/models/linkextractionoptions.md
   - docs/models/linksorder.md
@@ -56,11 +58,9 @@ generatedFiles:
   - docs/models/metadataoptions.md
   - docs/models/metafiles.md
   - docs/models/metrics.md
-  - docs/models/operations/extractlinkspostrequest.md
-  - docs/models/operations/getmarkdownrequest.md
-  - docs/models/operations/readurlrequest.md
   - docs/models/pagemetadata.md
   - docs/models/readsuccessresponse.md
+  - docs/models/readurlrequest.md
   - docs/models/security.md
   - docs/models/skippedlinks.md
   - docs/models/skippedlinksmedia.md
@@ -109,16 +109,15 @@ generatedFiles:
   - src/mcp-server/tools/extractLinks.ts
   - src/mcp-server/tools/getMarkdown.ts
   - src/mcp-server/tools/readUrl.ts
-  - src/models/errors/baseerrorresponse.ts
-  - src/models/errors/deepcrawlappdefaulterror.ts
-  - src/models/errors/deepcrawlapperror.ts
-  - src/models/errors/httpclienterrors.ts
-  - src/models/errors/index.ts
-  - src/models/errors/linksposterrorresponse.ts
-  - src/models/errors/responsevalidationerror.ts
-  - src/models/errors/sdkvalidationerror.ts
+  - src/models/baseerrorresponse.ts
+  - src/models/deepcrawlappdefaulterror.ts
+  - src/models/deepcrawlapperror.ts
+  - src/models/errorslinksposterrorresponse.ts
   - src/models/extractedlinks.ts
+  - src/models/extractlinkspostop.ts
+  - src/models/getmarkdownop.ts
   - src/models/htmlcleaningoptions.ts
+  - src/models/httpclienterrors.ts
   - src/models/index.ts
   - src/models/linkextractionoptions.ts
   - src/models/linksorder.ts
@@ -127,12 +126,11 @@ generatedFiles:
   - src/models/metadataoptions.ts
   - src/models/metafiles.ts
   - src/models/metrics.ts
-  - src/models/operations/extractlinkspost.ts
-  - src/models/operations/getmarkdown.ts
-  - src/models/operations/index.ts
-  - src/models/operations/readurl.ts
   - src/models/pagemetadata.ts
   - src/models/readsuccessresponse.ts
+  - src/models/readurlop.ts
+  - src/models/responsevalidationerror.ts
+  - src/models/sdkvalidationerror.ts
   - src/models/security.ts
   - src/models/skippedlinks.ts
   - src/models/skippedurl.ts

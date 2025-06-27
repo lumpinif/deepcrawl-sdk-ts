@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetMarkdownRequest } from "@deepcrawl-sdk/ts/models/operations";
+import { GetMarkdownRequest } from "@deepcrawl-sdk/ts";
 
 let value: GetMarkdownRequest = {
   url: "example.com",

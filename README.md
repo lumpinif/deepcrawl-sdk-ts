@@ -26,37 +26,21 @@
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
 <!-- $toc-max-depth=2 -->
-- [@deepcrawl-sdk/ts](#deepcrawl-sdkts)
-  - [Summary](#summary)
-  - [Table of Contents](#table-of-contents)
-  - [SDK Installation](#sdk-installation)
-    - [NPM](#npm)
-    - [PNPM](#pnpm)
-    - [Bun](#bun)
-    - [Yarn](#yarn)
-    - [Model Context Protocol (MCP) Server](#model-context-protocol-mcp-server)
-  - [Requirements](#requirements)
-  - [SDK Example Usage](#sdk-example-usage)
-    - [Get Markdown from a URL (GET)](#get-markdown-from-a-url-get)
-    - [Read URL (POST)](#read-url-post)
-    - [Extract Links from a URL (POST)](#extract-links-from-a-url-post)
-  - [Authentication](#authentication)
-    - [Per-Client Security Schemes](#per-client-security-schemes)
-  - [Available Resources and Operations](#available-resources-and-operations)
-    - [DeepcrawlApp SDK](#deepcrawlapp-sdk)
-  - [Standalone functions](#standalone-functions)
-  - [Retries](#retries)
-  - [Error Handling](#error-handling)
-    - [Example](#example)
-    - [Error Classes](#error-classes)
-  - [Server Selection](#server-selection)
-    - [Override Server URL Per-Client](#override-server-url-per-client)
-  - [Custom HTTP Client](#custom-http-client)
-  - [Debugging](#debugging)
-- [Development](#development)
-  - [Maturity](#maturity)
-  - [Contributions](#contributions)
-    - [SDK Created by Speakeasy](#sdk-created-by-speakeasy)
+* [@deepcrawl-sdk/ts](#deepcrawl-sdkts)
+  * [SDK Installation](#sdk-installation)
+  * [Requirements](#requirements)
+  * [SDK Example Usage](#sdk-example-usage)
+  * [Authentication](#authentication)
+  * [Available Resources and Operations](#available-resources-and-operations)
+  * [Standalone functions](#standalone-functions)
+  * [Retries](#retries)
+  * [Error Handling](#error-handling)
+  * [Server Selection](#server-selection)
+  * [Custom HTTP Client](#custom-http-client)
+  * [Debugging](#debugging)
+* [Development](#development)
+  * [Maturity](#maturity)
+  * [Contributions](#contributions)
 
 <!-- End Table of Contents [toc] -->
 
@@ -398,7 +382,7 @@ run();
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-[`DeepcrawlAppError`](./src/models/errors/deepcrawlapperror.ts) is the base class for all HTTP error responses. It has the following properties:
+[`DeepcrawlAppError`](./src/models/deepcrawlapperror.ts) is the base class for all HTTP error responses. It has the following properties:
 
 | Property            | Type       | Description                                                                             |
 | ------------------- | ---------- | --------------------------------------------------------------------------------------- |
@@ -411,8 +395,8 @@ run();
 
 ### Example
 ```typescript
+import * as models from "@deepcrawl-sdk/ts";
 import { DeepcrawlApp } from "@deepcrawl-sdk/ts";
-import * as errors from "@deepcrawl-sdk/ts/models/errors";
 
 const deepcrawlApp = new DeepcrawlApp({
   bearer: "Bearer <YOUR_API_KEY_HERE>",
@@ -427,14 +411,14 @@ async function run() {
     console.log(result);
   } catch (error) {
     // The base class for HTTP error responses
-    if (error instanceof errors.DeepcrawlAppError) {
+    if (error instanceof models.DeepcrawlAppError) {
       console.log(error.message);
       console.log(error.statusCode);
       console.log(error.body);
       console.log(error.headers);
 
       // Depending on the method different errors may be thrown
-      if (error instanceof errors.BaseErrorResponse) {
+      if (error instanceof models.BaseErrorResponse) {
         console.log(error.data$.success); // boolean
         console.log(error.data$.targetUrl); // string
         console.log(error.data$.error); // string
@@ -449,24 +433,24 @@ run();
 
 ### Error Classes
 **Primary error:**
-* [`DeepcrawlAppError`](./src/models/errors/deepcrawlapperror.ts): The base class for HTTP error responses.
+* [`DeepcrawlAppError`](./src/models/deepcrawlapperror.ts): The base class for HTTP error responses.
 
 <details><summary>Less common errors (8)</summary>
 
 <br />
 
 **Network errors:**
-* [`ConnectionError`](./src/models/errors/httpclienterrors.ts): HTTP client was unable to make a request to a server.
-* [`RequestTimeoutError`](./src/models/errors/httpclienterrors.ts): HTTP request timed out due to an AbortSignal signal.
-* [`RequestAbortedError`](./src/models/errors/httpclienterrors.ts): HTTP request was aborted by the client.
-* [`InvalidRequestError`](./src/models/errors/httpclienterrors.ts): Any input used to create a request is invalid.
-* [`UnexpectedClientError`](./src/models/errors/httpclienterrors.ts): Unrecognised or unexpected error.
+* [`ConnectionError`](./src/models/httpclienterrors.ts): HTTP client was unable to make a request to a server.
+* [`RequestTimeoutError`](./src/models/httpclienterrors.ts): HTTP request timed out due to an AbortSignal signal.
+* [`RequestAbortedError`](./src/models/httpclienterrors.ts): HTTP request was aborted by the client.
+* [`InvalidRequestError`](./src/models/httpclienterrors.ts): Any input used to create a request is invalid.
+* [`UnexpectedClientError`](./src/models/httpclienterrors.ts): Unrecognised or unexpected error.
 
 
-**Inherit from [`DeepcrawlAppError`](./src/models/errors/deepcrawlapperror.ts)**:
-* [`BaseErrorResponse`](docs/models/errors/baseerrorresponse.md): Status code `500`. Applicable to 2 of 3 methods.*
-* [`LinksPostErrorResponse`](docs/models/errors/linksposterrorresponse.md): Internal server error. Status code `500`. Applicable to 1 of 3 methods.*
-* [`ResponseValidationError`](./src/models/errors/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
+**Inherit from [`DeepcrawlAppError`](./src/models/deepcrawlapperror.ts)**:
+* [`BaseErrorResponse`](docs/models/baseerrorresponse.md): Status code `500`. Applicable to 2 of 3 methods.*
+* [`ErrorsLinksPostErrorResponse`](docs/models/errorslinksposterrorresponse.md): Internal server error. Status code `500`. Applicable to 1 of 3 methods.*
+* [`ResponseValidationError`](./src/models/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>
 

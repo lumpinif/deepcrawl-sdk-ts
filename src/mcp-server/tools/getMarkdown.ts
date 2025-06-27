@@ -3,11 +3,11 @@
  */
 
 import { getMarkdown } from "../../funcs/getMarkdown.js";
-import * as operations from "../../models/operations/index.js";
+import * as models from "../../models/index.js";
 import { formatResult, ToolDefinition } from "../tools.js";
 
 const args = {
-  request: operations.GetMarkdownRequest$inboundSchema,
+  request: models.GetMarkdownRequest$inboundSchema,
 };
 
 export const tool$getMarkdown: ToolDefinition<typeof args> = {

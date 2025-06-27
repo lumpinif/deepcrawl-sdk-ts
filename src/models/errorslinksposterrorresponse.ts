@@ -3,10 +3,15 @@
  */
 
 import * as z from "zod";
-import * as models from "../index.js";
 import { DeepcrawlAppError } from "./deepcrawlapperror.js";
+import {
+  LinksTree,
+  LinksTree$inboundSchema,
+  LinksTree$Outbound,
+  LinksTree$outboundSchema,
+} from "./linkstree.js";
 
-export type LinksPostErrorResponseData = {
+export type ErrorsLinksPostErrorResponseData = {
   success: boolean;
   /**
    * The URL that was being processed when the error occurred
@@ -20,10 +25,10 @@ export type LinksPostErrorResponseData = {
    * ISO timestamp when the error occurred
    */
   timestamp: string;
-  tree?: models.LinksTree | null | undefined;
+  tree?: LinksTree | null | undefined;
 };
 
-export class LinksPostErrorResponse extends DeepcrawlAppError {
+export class ErrorsLinksPostErrorResponse extends DeepcrawlAppError {
   success: boolean;
   /**
    * The URL that was being processed when the error occurred
@@ -37,13 +42,13 @@ export class LinksPostErrorResponse extends DeepcrawlAppError {
    * ISO timestamp when the error occurred
    */
   timestamp: string;
-  tree?: models.LinksTree | null | undefined;
+  tree?: LinksTree | null | undefined;
 
   /** The original data that was passed to this error instance. */
-  data$: LinksPostErrorResponseData;
+  data$: ErrorsLinksPostErrorResponseData;
 
   constructor(
-    err: LinksPostErrorResponseData,
+    err: ErrorsLinksPostErrorResponseData,
     httpMeta: { response: Response; request: Request; body: string },
   ) {
     const message = "message" in err && typeof err.message === "string"
@@ -57,13 +62,13 @@ export class LinksPostErrorResponse extends DeepcrawlAppError {
     this.timestamp = err.timestamp;
     if (err.tree != null) this.tree = err.tree;
 
-    this.name = "LinksPostErrorResponse";
+    this.name = "ErrorsLinksPostErrorResponse";
   }
 }
 
 /** @internal */
-export const LinksPostErrorResponse$inboundSchema: z.ZodType<
-  LinksPostErrorResponse,
+export const ErrorsLinksPostErrorResponse$inboundSchema: z.ZodType<
+  ErrorsLinksPostErrorResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -71,13 +76,13 @@ export const LinksPostErrorResponse$inboundSchema: z.ZodType<
   targetUrl: z.string(),
   error: z.string(),
   timestamp: z.string(),
-  tree: z.nullable(models.LinksTree$inboundSchema).optional(),
+  tree: z.nullable(LinksTree$inboundSchema).optional(),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
 })
   .transform((v) => {
-    return new LinksPostErrorResponse(v, {
+    return new ErrorsLinksPostErrorResponse(v, {
       request: v.request$,
       response: v.response$,
       body: v.body$,
@@ -85,38 +90,38 @@ export const LinksPostErrorResponse$inboundSchema: z.ZodType<
   });
 
 /** @internal */
-export type LinksPostErrorResponse$Outbound = {
+export type ErrorsLinksPostErrorResponse$Outbound = {
   success: boolean;
   targetUrl: string;
   error: string;
   timestamp: string;
-  tree?: models.LinksTree$Outbound | null | undefined;
+  tree?: LinksTree$Outbound | null | undefined;
 };
 
 /** @internal */
-export const LinksPostErrorResponse$outboundSchema: z.ZodType<
-  LinksPostErrorResponse$Outbound,
+export const ErrorsLinksPostErrorResponse$outboundSchema: z.ZodType<
+  ErrorsLinksPostErrorResponse$Outbound,
   z.ZodTypeDef,
-  LinksPostErrorResponse
-> = z.instanceof(LinksPostErrorResponse)
+  ErrorsLinksPostErrorResponse
+> = z.instanceof(ErrorsLinksPostErrorResponse)
   .transform(v => v.data$)
   .pipe(z.object({
     success: z.boolean(),
     targetUrl: z.string(),
     error: z.string(),
     timestamp: z.string(),
-    tree: z.nullable(models.LinksTree$outboundSchema).optional(),
+    tree: z.nullable(LinksTree$outboundSchema).optional(),
   }));
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace LinksPostErrorResponse$ {
-  /** @deprecated use `LinksPostErrorResponse$inboundSchema` instead. */
-  export const inboundSchema = LinksPostErrorResponse$inboundSchema;
-  /** @deprecated use `LinksPostErrorResponse$outboundSchema` instead. */
-  export const outboundSchema = LinksPostErrorResponse$outboundSchema;
-  /** @deprecated use `LinksPostErrorResponse$Outbound` instead. */
-  export type Outbound = LinksPostErrorResponse$Outbound;
+export namespace ErrorsLinksPostErrorResponse$ {
+  /** @deprecated use `ErrorsLinksPostErrorResponse$inboundSchema` instead. */
+  export const inboundSchema = ErrorsLinksPostErrorResponse$inboundSchema;
+  /** @deprecated use `ErrorsLinksPostErrorResponse$outboundSchema` instead. */
+  export const outboundSchema = ErrorsLinksPostErrorResponse$outboundSchema;
+  /** @deprecated use `ErrorsLinksPostErrorResponse$Outbound` instead. */
+  export type Outbound = ErrorsLinksPostErrorResponse$Outbound;
 }

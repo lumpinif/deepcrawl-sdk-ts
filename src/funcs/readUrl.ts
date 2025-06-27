@@ -10,19 +10,17 @@ import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
-import { DeepcrawlAppError } from "../models/errors/deepcrawlapperror.js";
+import { DeepcrawlAppError } from "../models/deepcrawlapperror.js";
 import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
   RequestTimeoutError,
   UnexpectedClientError,
-} from "../models/errors/httpclienterrors.js";
-import * as errors from "../models/errors/index.js";
-import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
-import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+} from "../models/httpclienterrors.js";
 import * as models from "../models/index.js";
-import * as operations from "../models/operations/index.js";
+import { ResponseValidationError } from "../models/responsevalidationerror.js";
+import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -31,12 +29,12 @@ import { Result } from "../types/fp.js";
  */
 export function readUrl(
   client: DeepcrawlAppCore,
-  request: operations.ReadUrlRequest,
+  request: models.ReadUrlRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
     models.ReadSuccessResponse,
-    | errors.BaseErrorResponse
+    | models.BaseErrorResponse
     | DeepcrawlAppError
     | ResponseValidationError
     | ConnectionError
@@ -56,13 +54,13 @@ export function readUrl(
 
 async function $do(
   client: DeepcrawlAppCore,
-  request: operations.ReadUrlRequest,
+  request: models.ReadUrlRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
       models.ReadSuccessResponse,
-      | errors.BaseErrorResponse
+      | models.BaseErrorResponse
       | DeepcrawlAppError
       | ResponseValidationError
       | ConnectionError
@@ -77,7 +75,7 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => operations.ReadUrlRequest$outboundSchema.parse(value),
+    (value) => models.ReadUrlRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -154,7 +152,7 @@ async function $do(
 
   const [result] = await M.match<
     models.ReadSuccessResponse,
-    | errors.BaseErrorResponse
+    | models.BaseErrorResponse
     | DeepcrawlAppError
     | ResponseValidationError
     | ConnectionError
@@ -165,7 +163,7 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, models.ReadSuccessResponse$inboundSchema),
-    M.jsonErr(500, errors.BaseErrorResponse$inboundSchema),
+    M.jsonErr(500, models.BaseErrorResponse$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, req, { extraFields: responseFields });

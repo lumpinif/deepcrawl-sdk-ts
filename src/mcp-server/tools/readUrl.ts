@@ -3,11 +3,11 @@
  */
 
 import { readUrl } from "../../funcs/readUrl.js";
-import * as operations from "../../models/operations/index.js";
+import * as models from "../../models/index.js";
 import { formatResult, ToolDefinition } from "../tools.js";
 
 const args = {
-  request: operations.ReadUrlRequest$inboundSchema,
+  request: models.ReadUrlRequest$inboundSchema,
 };
 
 export const tool$readUrl: ToolDefinition<typeof args> = {

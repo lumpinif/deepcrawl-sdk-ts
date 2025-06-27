@@ -3,10 +3,15 @@
  */
 
 import * as z from "zod";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
+import { safeParse } from "../lib/schemas.js";
+import { Result as SafeParseResult } from "../types/fp.js";
+import {
+  MetadataOptions,
+  MetadataOptions$inboundSchema,
+  MetadataOptions$Outbound,
+  MetadataOptions$outboundSchema,
+} from "./metadataoptions.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
  * /read POST request body, read options schema
@@ -39,7 +44,7 @@ export type ReadUrlRequest = {
   /**
    * Options for metadata extraction.
    */
-  metadataOptions?: models.MetadataOptions | undefined;
+  metadataOptions?: MetadataOptions | undefined;
 };
 
 /** @internal */
@@ -54,7 +59,7 @@ export const ReadUrlRequest$inboundSchema: z.ZodType<
   cleanedHtml: z.nullable(z.boolean().default(false)),
   robots: z.nullable(z.boolean().default(false)),
   rawHtml: z.nullable(z.boolean().default(false)),
-  metadataOptions: models.MetadataOptions$inboundSchema.optional(),
+  metadataOptions: MetadataOptions$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -65,7 +70,7 @@ export type ReadUrlRequest$Outbound = {
   cleanedHtml: boolean | null;
   robots: boolean | null;
   rawHtml: boolean | null;
-  metadataOptions?: models.MetadataOptions$Outbound | undefined;
+  metadataOptions?: MetadataOptions$Outbound | undefined;
 };
 
 /** @internal */
@@ -80,7 +85,7 @@ export const ReadUrlRequest$outboundSchema: z.ZodType<
   cleanedHtml: z.nullable(z.boolean().default(false)),
   robots: z.nullable(z.boolean().default(false)),
   rawHtml: z.nullable(z.boolean().default(false)),
-  metadataOptions: models.MetadataOptions$outboundSchema.optional(),
+  metadataOptions: MetadataOptions$outboundSchema.optional(),
 });
 
 /**
