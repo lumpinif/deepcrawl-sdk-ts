@@ -1,20 +1,21 @@
-speakeasyVersion: 1.568.2
+speakeasyVersion: 1.570.2
 sources:
     DeepcrawlApp:
         sourceNamespace: deepcrawl-app
-        sourceRevisionDigest: sha256:9d9a5119835934b69a94adccbfd49f8f5664f68889d31845bcaaeb16a54d3d0c
+        sourceRevisionDigest: sha256:17cc57cd2dad2013e4f4a051a61cd21cb29962e1316f8a4e91631f1674608496
         sourceBlobDigest: sha256:00506afd5821945d7b972ddb5119bc3672a6143a7b55c73194bd8c2ad45a2b1b
         tags:
             - latest
+            - speakeasy-sdk-regen-1750810499
             - 0.0.1
 targets:
     deepcrawl-app:
         source: DeepcrawlApp
         sourceNamespace: deepcrawl-app
-        sourceRevisionDigest: sha256:9d9a5119835934b69a94adccbfd49f8f5664f68889d31845bcaaeb16a54d3d0c
+        sourceRevisionDigest: sha256:17cc57cd2dad2013e4f4a051a61cd21cb29962e1316f8a4e91631f1674608496
         sourceBlobDigest: sha256:00506afd5821945d7b972ddb5119bc3672a6143a7b55c73194bd8c2ad45a2b1b
         codeSamplesNamespace: deepcrawl-app-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:d397aa62c66a1927f4e17af8212700e61ca5cbb05129e88801a2c63fe5803d77
+        codeSamplesRevisionDigest: sha256:24103022f48da46082138e123bf0ace546d17150be3966ff53ba538cd379a267
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
