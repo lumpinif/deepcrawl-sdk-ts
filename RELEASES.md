@@ -9,3 +9,13 @@ Based on:
 - [typescript v0.0.2] .
 ### Releases
 - [NPM v0.0.2] https://www.npmjs.com/package/@deepcrawl-sdk/ts/v/0.0.2 - .
+
+## 2025-06-27 16:30:53
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.571.0 (2.640.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.0.3] .
+### Releases
+- [NPM v0.0.3] https://www.npmjs.com/package/@deepcrawl-sdk/ts/v/0.0.3 - .
